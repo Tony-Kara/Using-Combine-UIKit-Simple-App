@@ -29,6 +29,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        publishButton.addTarget(self, action: #selector(publishButtonTapped), for: .primaryActionTriggered)
         
         // Create a publisher
         let publisher = NotificationCenter.Publisher(center: .default, name: .newBlogPost, object: nil)
@@ -44,7 +45,13 @@ class ViewController: UIViewController {
         
     }
 
- 
+    @objc func publishButtonTapped(_ sender: UIButton) {
+        // Post the notification
+        let title = blogTextField.text ?? "Coming soon"
+        let blogPost = BlogPost(title: title)
+        NotificationCenter.default.post(name: .newBlogPost, object: blogPost)
+    }
+
  
     
     
