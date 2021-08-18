@@ -47,16 +47,11 @@ class ViewController: UIViewController {
 
     @objc func publishButtonTapped(_ sender: UIButton) {
         // Post the notification
-        let title = blogTextField.text ?? "Coming soon"
+        let title = blogTextField.text ?? "Coming soon!!"
         let blogPost = BlogPost(title: title)
         NotificationCenter.default.post(name: .newBlogPost, object: blogPost)
     }
 
- 
-    
-    
-    
-    
 
 }
 
