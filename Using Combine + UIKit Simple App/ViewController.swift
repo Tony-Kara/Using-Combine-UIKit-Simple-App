@@ -9,6 +9,12 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBOutlet weak var blogTextField: UITextField!
+    @IBOutlet weak var publishButton: UIButton!
+    @IBOutlet weak var subscribedLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
