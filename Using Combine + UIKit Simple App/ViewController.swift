@@ -6,6 +6,16 @@
 //
 
 import UIKit
+import Combine
+
+extension Notification.Name {
+    static let newBlogPost = Notification.Name("newPost")
+}
+
+struct BlogPost {
+    let title: String
+}
+
 
 class ViewController: UIViewController {
 
@@ -20,6 +30,16 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    // Create a publisher
+    let publisher = NotificationCenter.Publisher(center: .default, name: .newBlogPost, object: nil)
+     .map { (notification) -> String? in
+         return (notification.object as? BlogPost)?.title ?? ""
+    }
+    
+    
+    
+    
+    
 
 }
 
