@@ -28,14 +28,24 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        
+        // Create a publisher
+        let publisher = NotificationCenter.Publisher(center: .default, name: .newBlogPost, object: nil)
+         .map { (notification) -> String? in
+             return (notification.object as? BlogPost)?.title ?? ""
+          
+        }
+        
+        // Create a subscriber
+        let subscriber = Subscribers.Assign(object: subscribedLabel, keyPath: \.text)
+        publisher.subscribe(subscriber)
+
+        
     }
 
-    // Create a publisher
-    let publisher = NotificationCenter.Publisher(center: .default, name: .newBlogPost, object: nil)
-     .map { (notification) -> String? in
-         return (notification.object as? BlogPost)?.title ?? ""
-    }
-    
+ 
+ 
     
     
     
